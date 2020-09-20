@@ -1,0 +1,25 @@
+1. Установка git
+Скачала git с этого сайта: https://git-scm.com/download/win
+2. Первоначальная настройка git:указала свое имя и почту для подписи в коммитах
+git config --global user.name Viktoria
+git config --global user.email vikaarestova01@gmail.com"
+3. Создала каталог проекта:
+Запустила командную строку из рабочего стола:
+mkdir project//создала папку project
+cd project//зашла в нее
+4. Инициализировала git:
+git init
+Командная строка вывела сообщение:
+Initialized empty Git repository in C:/git_tutorial/project/.git/
+5. Создала текстовый файл отчета:
+win 1251 > Арестова_Виктория_ЛР1.txt 
+Проиндексировала его:
+git add Арестова_Виктория_ЛР1.txt
+6. Сделала первый коммит:
+git commit -m "Otchet"
+Командная строка вывела сообщение:
+[master (root-commit) ac81881] Otchet
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Arestova_Viktoria_LR1.txt
+
+
