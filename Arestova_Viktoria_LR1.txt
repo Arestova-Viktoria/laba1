@@ -48,4 +48,273 @@ Changes to be committed:
 $ git commit -m "Otchet"
 [master f73698d] Otchet
  1 file changed, 25 insertions(+)
-10.
+10. Игнорирование файлов:
+Создала файл .gitignore в папке project
+В нем написала:
+*.log
+*.md
+Проиндексировала и закоммитила файл .gitignore:
+git add .gitignore
+git commit -m "Add .gitignore"
+Затем создала файлы main.css humans.md hold.log и попыталась проиндексировать их
+и посмотреть изменения:
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Arestova_Viktoria_LR1.txt
+        new file:   main.css
+Система Git увидела только новый файл main.css и файл с отчетом.
+11. Сравнение в системе Git:
+git diff
+git log --oneline
+Система вывела:
+e0560c5 Add .gitignore
+f73698d Otchet
+ac81881 Otchet
+Сравним два коммита Add .gitignore и Otchet(1):
+$ git diff f73698d e0560c5
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..fee94c7
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++*.log
++*.md
+diff --git a/Arestova_Viktoria_LR1.txt b/Arestova_Viktoria_LR1.txt
+index 18e54eb..a372b64 100644
+--- a/Arestova_Viktoria_LR1.txt
++++ b/Arestova_Viktoria_LR1.txt
+@@ -21,5 +21,31 @@ git commit -m "Otchet"
+ [master (root-commit) ac81881] Otchet
+  1 file changed, 0 insertions(+), 0 deletions(-)
+  create mode 100644 Arestova_Viktoria_LR1.txt
++7 - 8. Добавила в файл описание всех действий, которые были сделаны до этого.
++Закоммитила изменения:
++Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
++$ git status
++On branch master
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++        modified:   Arestova_Viktoria_LR1.txt
+
++no changes added to commit (use "git add" and/or "git commit -a")
+
++Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
++$ git add .
++
++Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
++$ git status
++On branch master
++Changes to be committed:
++  (use "git restore --staged <file>..." to unstage)
++        modified:   Arestova_Viktoria_LR1.txt
++
++9. Сделала второй коммит:
++Командная строка вывела сообщение:
++$ git commit -m "Otchet"
++[master f73698d] Otchet
++ 1 file changed, 25 insertions(+)
++10.
+\ No newline at end of file
+diff --git a/main.css b/main.css
+new file mode 100644
+index 0000000..e69de29
+12. Удаление файлов:
+Взяла файл name.txt в папке project
+Проиндексировала и закоммитила его.
+Удалила:
+$ git rm name.txt
+Получила сообщение об удалении файла:
+rm 'name.txt'
+13. Перемещение файлов:
+Создала новую папку в папке project:
+mkdir company
+создала новый файл,проиндексировала его:
+git add move.txt
+Переместила его в папку company:
+$ git mv move.txt company/
+Подтвердила изменения:
+$ git commit -m "Moving files to directory 'company'"
+[master 2c707db] Moving files to directory 'company'
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename name.txt => company/move.txt (100%)
+14. Работа с git log для просмотра истории:
+$ git log
+commit 2c707db4402e72b61e7da52a9e4d293501af6d80 (HEAD -> master)
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Mon Sep 28 12:49:14 2020 +0700
+
+    Moving files to directory 'company'
+
+commit e67e3151454789e058687d0908d4d9970e3c5849
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Mon Sep 28 12:14:51 2020 +0700
+
+    New commit
+
+commit e0560c5fbd716ac8b778e2a4cb173a0648d02671
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Mon Sep 28 12:02:49 2020 +0700
+
+    Add .gitignore
+
+commit f73698da428f1e3c35252bd70984687726888e5b
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Sun Sep 20 22:50:18 2020 +0700
+
+    Otchet
+
+commit ac81881e0096f132621893f7a8b458101677c08f
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Sun Sep 20 22:13:07 2020 +0700
+
+    Otchet
+15. Механизм отмены сделанных изменений:
+Создала два файла с именами f.txt и collect.css. Проиндексировала и закоммитила:
+$ git commit -m "commit file"
+[master 9235d20] commit file
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 collect.css
+ create mode 100644 f.txt
+Поменяем текст коммита. Для этого набираем команду:
+git commit --amend
+Открывается текстовый редактор.где можно поменять название коммита.
+Меняем,закрываем редактор,командная строка выводит сообщение:
+$ git log
+commit 9235d2033f3967283e5c9c0e6dd018f9f4bb1240 (HEAD -> master)
+[master 2e3ba88] commit changes
+ Date: Mon Sep 28 20:25:30 2020 +0700
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 collect.css
+ create mode 100644 f.txt
+Если воспользоваться командой git log,можно увидеть,что имя последнего коммита поменялось:
+$ git log
+commit 2e3ba887b255178b9211ff6d2e23c8c9ed4200dd (HEAD -> master)
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Mon Sep 28 20:25:30 2020 +0700
+
+    commit changes
+
+     Please enter the commit message for your changes. Lines starting
+Отмена индексации файла:
+Создаем два файла: file_first.txt и file_second.txt. Предположим,что мы сделали индексацию этих файлов(git add *) и нужно отменить индексацию файла file_second.txt
+$ git reset HEAD file_second.txt
+Теперь файл file_second.txt не добавлен в индекс
+Отмена изменений в файле:
+Создадим файл hello.txt. В нем напишем строчку hello, dear.
+Проиндексируем и закоммитим файл.
+Добавим в файл строчку Hello world!
+Предположим,что нам нужно убрать эти изменения.Делаем откат к предыдущему коммиту:
+$ git checkout --  hello.txt
+Изменения исчезли.
+Работа с метками:
+Создала метку:
+$ git tag v1.0lw
+Вывела список меток:
+$ git tag
+v1.0lw
+Посмотрим помеченный коммит:
+$ git show v1.0lw
+commit 2e3ba887b255178b9211ff6d2e23c8c9ed4200dd (HEAD -> master, tag: v1.0lw)
+Author: Viktoria <vikaarestova01@gmail.com>
+Date:   Mon Sep 28 20:25:30 2020 +0700
+
+    commit changes
+
+     Please enter the commit message for your changes. Lines starting
+
+diff --git a/collect.css b/collect.css
+new file mode 100644
+index 0000000..e69de29
+diff --git a/f.txt b/f.txt
+new file mode 100644
+index 0000000..e69de29
+16. Создание ветки:
+$ git checkout -b new_branch
+Командная строка вывела сообщение:
+Switched to a new branch 'new_branch'
+Переключение между ветками:
+$ git checkout master
+Командная строка вывела сообщение:
+Switched to branch 'master'
+Удаление ветки:
+$ git branch -d new_branch
+Командная строка вывела сообщение:
+Deleted branch new_branch (was 2c5a3b5).
+Объединение веток(слияние):
+Создадим ветку new_branch:
+$ git checkout -b new_branch
+Создадим в ней файл new_file.txt:
+$ touch new_file.txt
+Проиндексировала и заккомитила:
+$ git add new_file.txt
+$ git commit -m "New branch"
+Написала в нем строчку:new file in new branch
+Проиндексировала и заккомитила:
+$ git add new_file.txt
+$ git commit -m "Edit file in new branch"
+Переключаемся на ветку,в которую хотим внести изменения из ветки new_branch
+$ git checkout master
+Switched to branch 'master'
+Cлияние:
+$ git merge new_branch
+Командная строка вывела сообщение:
+Updating 2c5a3b5..c08804d
+Fast-forward
+ new_file.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new_file.txt
+Конфликты слияния:
+Создадим конфликт искусственно.Для этого снова переключимся на ветку new branch и в файл new_file.txt добавим вторую строчку:
+conflict
+Проиндексируем и закоммитим эти изменения:
+$ git add new_file.txt
+$ git commit -m "Conflict file"
+Теперь снова переключимся на ветку master:
+$ git checkout master
+Добавим в файл new_file.txt вторую строчку:
+conflict master
+Проиндексируем и закоммитим эти изменения:
+$ git add new_file.txt
+$ git commit -m "Conflict file in master"
+Попробуем выполнить слияние:
+$ git merge new_branch
+Получаем сообщение о конфликте:
+Auto-merging new_file.txt
+CONFLICT (content): Merge conflict in new_file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+Если открыть файл new_file,то увидим:
+new file in new branch
+<<<<<<< HEAD
+conflict master
+=======
+conflict
+>>>>>>> new_branch
+Отредактируем файл вручную и проиндексируем и закоммитим разрешение конфликта:
+$ git add new_file.txt
+$ git commit -m "Fixed conflict"
+Командная строка вывела сообщение:
+[master 195bff2] Fixed conflict
+17. Механизм прятания:
+Напишем в файле file.txt строчку:
+hello
+Спрячем наши изменения:
+$ git stash
+Командная строка вывела сообщение:
+Saved working directory and index state WIP on master: 2b765a3 Fixed
+(Fixed-подпись последнего коммита)
+Вернем изменения:
+$ git stash pop
+В файле снова появилась строчка hello.cd
+
+
+
+
+
+
+
+
+
