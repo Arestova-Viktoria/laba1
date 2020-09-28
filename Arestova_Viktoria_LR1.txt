@@ -21,5 +21,31 @@ git commit -m "Otchet"
 [master (root-commit) ac81881] Otchet
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 Arestova_Viktoria_LR1.txt
+7 - 8. Добавила в файл описание всех действий, которые были сделаны до этого.
+Закоммитила изменения:
+Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Arestova_Viktoria_LR1.txt
 
+no changes added to commit (use "git add" and/or "git commit -a")
 
+Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
+$ git add .
+
+Виктория@LAPTOP-AV4DQSOQ MINGW64 /c/git_tutorial/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Arestova_Viktoria_LR1.txt
+
+9. Сделала второй коммит:
+Командная строка вывела сообщение:
+$ git commit -m "Otchet"
+[master f73698d] Otchet
+ 1 file changed, 25 insertions(+)
+10.
